@@ -1,0 +1,8 @@
+label {
+  margin-left: 10px;
+  width: 5%;
+}
+input {
+  display: inline-block;
+  width: auto;
+}

@@ -1,0 +1,114 @@
+<div class="container">
+  <div class="row">
+    <a href="/create">
+      <button class="btn btn-info" style="float: right;">
+        Add Employee
+      </button></a
+    >
+    <!-- <nav class="navbar">
+      <input
+        class="form-control"
+        type="text"
+        name="search"
+        [(ngModel)]="filter"
+      />
+    </nav> -->
+    <!-- <input class="form-control" type="text" (keyup.enter)="createUser()" /> -->
+    <table class="table table-striped" bordered="true">
+      <thead>
+        <tr>
+          <!-- <th sapp-tyle="width: 25%">
+          Id
+        </th> -->
+          <th style="width: 25%">
+            EmployeeName
+          </th>
+          <th style="width: 25%">
+            EmployeeAge
+          </th>
+          <th style="width: 25%">
+            Employeesalary
+          </th>
+          <th style="width: 25%">
+            Location
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees" style="text-align: left">
+          <!-- <td>{{ employee.id }}</td> -->
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.age }}</td>
+          <td>{{ employee.salary }}</td>
+          <td>{{ employee.city }}</td>
+
+          <td>
+            <button
+              class="btn btn-primary"
+              (click)="updateEmployee($event, employee)"
+            >
+              update
+            </button>
+          </td>
+          <td>
+            <button
+              class="btn btn-danger"
+              (click)="deleteEmployee($event, employee)"
+            >
+              delete
+            </button>
+          </td>
+          <div *ngIf="editEmp && empEdit.id == employee.id">
+            <form
+              class="form-inline"
+              (ngSubmit)="updateEmployee($event, employee)"
+            >
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="employee.name"
+                  name="name"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="employee.age"
+                  name="age"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="employee.salary"
+                  name="salary"
+                />
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="employee.city"
+                    name="city"
+                  />
+                </div>
+                <input type="submit" value="Update Item" class="btn" />
+                <input
+                  type="submit"
+                  value="clear"
+                  class="btn"
+                  (click)="clearState()"
+                />
+              </div>
+            </form>
+          </div>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- <ul style="text-align: left">
+  <li *ngFor="let employee of employees">{{ employee }}</li>
+</ul> -->
