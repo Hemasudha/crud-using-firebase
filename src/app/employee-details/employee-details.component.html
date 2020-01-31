@@ -5,21 +5,10 @@
         Add Employee
       </button></a
     >
-    <!-- <nav class="navbar">
-      <input
-        class="form-control"
-        type="text"
-        name="search"
-        [(ngModel)]="filter"
-      />
-    </nav> -->
-    <!-- <input class="form-control" type="text" (keyup.enter)="createUser()" /> -->
+
     <table class="table table-striped" bordered="true">
       <thead>
         <tr>
-          <!-- <th sapp-tyle="width: 25%">
-          Id
-        </th> -->
           <th style="width: 25%">
             EmployeeName
           </th>
@@ -36,7 +25,6 @@
       </thead>
       <tbody>
         <tr *ngFor="let employee of employees" style="text-align: left">
-          <!-- <td>{{ employee.id }}</td> -->
           <td>{{ employee.name }}</td>
           <td>{{ employee.age }}</td>
           <td>{{ employee.salary }}</td>
@@ -109,6 +97,3 @@
     </table>
   </div>
 </div>
-<!-- <ul style="text-align: left">
-  <li *ngFor="let employee of employees">{{ employee }}</li>
-</ul> -->
