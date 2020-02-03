@@ -2,24 +2,40 @@
   <form [formGroup]="createForm" (ngSubmit)="submit()">
     <div class="form-group">
       <label for="name">Name:</label>
-      <input class="form-control" formControlName="name" />
+      <input
+        class="form-control"
+        formControlName="name"
+        [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+      />
+      <div *ngIf="submitted && f.name.errors" class="text-danger">
+        <div *ngIf="f.name.errors.required">name is required</div>
+      </div>
     </div>
     <div class="form-group">
       <label for="age">Age:</label>
 
       <input class="form-control" formControlName="age" />
+      <div *ngIf="submitted && f.age.errors" class="text-danger">
+        <div *ngIf="f.age.errors.required">age is required</div>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="salary">Salary:</label>
 
       <input class="form-control" formControlName="salary" />
+      <div *ngIf="submitted && f.salary.errors" class="text-danger">
+        <div *ngIf="f.salary.errors.required">salary is required</div>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="city">City:</label>
 
       <input class="form-control" formControlName="city" />
+      <div *ngIf="submitted && f.city.errors" class="text-danger">
+        <div *ngIf="f.city.errors.required">city is required</div>
+      </div>
     </div>
     <button class="btn btn-info">Add</button>
   </form>

@@ -22,6 +22,7 @@ export class CreateEmployeeComponent implements OnInit {
   };
   showDiv: boolean = true;
   createForm: FormGroup;
+  submitted = false;
   constructor(
     private employeesService: EmployeesService,
     private fb: FormBuilder,
@@ -29,14 +30,22 @@ export class CreateEmployeeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.createForm = new FormGroup({
-      name: new FormControl(""),
-      age: new FormControl(""),
-      salary: new FormControl(""),
-      city: new FormControl("")
+    this.createForm = this.fb.group({
+      name: new FormControl("", [Validators.required, Validators.minLength(4)]),
+      age: new FormControl("", Validators.required),
+      salary: new FormControl("", Validators.required),
+      city: new FormControl("", Validators.required)
     });
   }
+  get f() {
+    return this.createForm.controls;
+  }
   submit() {
+    this.submitted = true;
+    if (this.createForm.invalid) {
+      return;
+    }
+
     console.log(this.createForm.value);
     if (
       this.employee.name !== "" &&
