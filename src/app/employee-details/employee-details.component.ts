@@ -3,7 +3,7 @@ import {
   AngularFireDatabase
 } from "@angular/fire/database";
 import { User } from "./../../user";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { EmployeesService } from "../employees.service";
 import { Employee } from "../employees";
 
@@ -14,18 +14,14 @@ import { Employee } from "../employees";
 })
 export class EmployeeDetailsComponent implements OnInit {
   employees: Employee[];
+
   editEmp: boolean = false;
   empEdit: Employee;
-  hidden: boolean = true;
-  // constructor(db: AngularFireDatabase) {
-  //   db.list("/users")
-  //     .valueChanges()
-  //     .subscribe(users => {
-  //       this.users = users;
-  //       console.log(this.users);
-  //     });
-  // }
+  showDiv: boolean = false;
+  public details;
   constructor(private employeesService: EmployeesService) {}
+
+  @Output() empDetails = new EventEmitter();
 
   ngOnInit() {
     this.employeesService.getUser().subscribe(res => {
@@ -33,21 +29,14 @@ export class EmployeeDetailsComponent implements OnInit {
       console.log(res);
     });
   }
-
-  updateEmployee(event, employee) {
-    this.editEmp = true;
-    this.empEdit = employee;
-    this.employeesService.updateEmployee(employee);
-    // this.hidden = false;
+  changeCount(data) {
+    console.log(data);
+    this.showDiv = false;
+  }
+  edit(event) {
+    this.showDiv = true;
   }
   deleteEmployee(event, employee) {
     this.employeesService.deleteEmployee(employee);
-  }
-  clearState() {
-    this.editEmp = false;
-    this.empEdit = null;
-  }
-  hideTable() {
-    this.hidden = false;
   }
 }

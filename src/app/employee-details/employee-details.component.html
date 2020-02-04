@@ -23,18 +23,15 @@
           </th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let employee of employees" style="text-align: left">
+      <tbody *ngFor="let employee of employees">
+        <tr style="text-align: left">
           <td>{{ employee.name }}</td>
           <td>{{ employee.age }}</td>
           <td>{{ employee.salary }}</td>
           <td>{{ employee.city }}</td>
 
           <td>
-            <button
-              class="btn btn-primary"
-              (click)="updateEmployee($event, employee)"
-            >
+            <button class="btn btn-primary" (click)="edit($event, employee)">
               update
             </button>
           </td>
@@ -46,52 +43,15 @@
               delete
             </button>
           </td>
-          <div *ngIf="editEmp && empEdit.id == employee.id">
-            <form
-              class="form-inline"
-              (ngSubmit)="updateEmployee($event, employee)"
-            >
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  [(ngModel)]="employee.name"
-                  name="name"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  [(ngModel)]="employee.age"
-                  name="age"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  [(ngModel)]="employee.salary"
-                  name="salary"
-                />
-                <div class="form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    [(ngModel)]="employee.city"
-                    name="city"
-                  />
-                </div>
-                <input type="submit" value="Update Item" class="btn" />
-                <input
-                  type="submit"
-                  value="clear"
-                  class="btn"
-                  (click)="clearState()"
-                />
-              </div>
-            </form>
-          </div>
+        </tr>
+        <tr>
+          <td colspan="5" class="details">
+            <app-update-employee
+              *ngIf="showDiv"
+              [employee]="employee"
+              (closePane)="changeCount(event)"
+            ></app-update-employee>
+          </td>
         </tr>
       </tbody>
     </table>

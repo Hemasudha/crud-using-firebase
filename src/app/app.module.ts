@@ -14,6 +14,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { CreateEmployeeComponent } from "./create-employee/create-employee.component";
+import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
 
 const appRoutes: Routes = [
   { path: "create", component: CreateEmployeeComponent },
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
     AppComponent,
     EmployeeDetailsComponent,
     NavbarComponent,
-    CreateEmployeeComponent
+    CreateEmployeeComponent,
+    UpdateEmployeeComponent
   ],
 
   providers: [EmployeesService],
