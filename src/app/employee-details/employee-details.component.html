@@ -31,7 +31,10 @@
           <td>{{ employee.city }}</td>
 
           <td>
-            <button class="btn btn-primary" (click)="edit($event, employee)">
+            <button
+              class="btn btn-primary"
+              (click)="this.showDiv = true && (employee.canEditCode = true)"
+            >
               edit
             </button>
           </td>
@@ -47,7 +50,7 @@
         <tr>
           <td colspan="5" class="details">
             <app-update-employee
-              *ngIf="showDiv"
+              *ngIf="showDiv && employee.canEditCode"
               [employee]="employee"
               (closePane)="changeCount(event)"
             ></app-update-employee>
@@ -55,26 +58,5 @@
         </tr>
       </tbody>
     </table>
-    <!-- <div
-      *ngIf="toast"
-      class="toast"
-      role="alert"
-      aria-live="assertive"
-      aria-atomic="true"
-    >
-      <div class="toast-header">
-        <button
-          type="button"
-          class="ml-2 mb-1 close"
-          data-dismiss="toast"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="toast-body">
-        Updated employee Details Successfully
-      </div>
-    </div> -->
   </div>
 </div>

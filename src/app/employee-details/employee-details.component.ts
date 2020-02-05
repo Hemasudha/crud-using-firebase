@@ -1,9 +1,4 @@
-import {
-  AngularFireDatabaseModule,
-  AngularFireDatabase
-} from "@angular/fire/database";
-import { User } from "./../../user";
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { EmployeesService } from "../employees.service";
 import { Employee } from "../employees";
 
@@ -18,10 +13,7 @@ export class EmployeeDetailsComponent implements OnInit {
   editEmp: boolean = false;
   empEdit: Employee;
   showDiv: boolean = false;
-  toast: boolean = false;
   constructor(private employeesService: EmployeesService) {}
-
-  @Output() empDetails = new EventEmitter();
 
   ngOnInit() {
     this.employeesService.getUser().subscribe(res => {
@@ -32,10 +24,12 @@ export class EmployeeDetailsComponent implements OnInit {
   changeCount(data) {
     console.log(data);
     this.showDiv = false;
-    this.toast = true;
   }
   edit(event) {
     this.showDiv = true;
+  }
+  setTitleEdit(employee) {
+    employee.canEditCode = true;
   }
   deleteEmployee(event, employee) {
     this.employeesService.deleteEmployee(employee);

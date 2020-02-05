@@ -11,7 +11,7 @@ export class UpdateEmployeeComponent implements OnInit {
   employees: Employee[];
   editEmp: boolean = false;
   empEdit: Employee;
-  showDiv: boolean = true;
+
   constructor(
     private employeesService: EmployeesService,
     public toastr: ToastrManager
@@ -30,5 +30,6 @@ export class UpdateEmployeeComponent implements OnInit {
   }
   clear() {
     this.closePane.emit(this.employee);
+    this.employee.canEditCode = false;
   }
 }
