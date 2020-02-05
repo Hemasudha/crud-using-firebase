@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^6.1.0",
+    "@angular/animations": "^6.1.10",
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
     "@angular/core": "^6.1.0",
@@ -24,6 +24,7 @@
     "angularfire2": "^5.3.0",
     "core-js": "^2.5.4",
     "firebase": "^7.7.0",
+    "ng6-toastr-notifications": "^1.0.4",
     "ngx-order-pipe": "^2.0.4",
     "rxjs": "6.0.0",
     "zone.js": "~0.8.26"

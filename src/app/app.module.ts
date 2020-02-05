@@ -11,10 +11,12 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 import { DataTableModule } from "angular-6-datatable";
 import { HttpClientModule } from "@angular/common/http";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ToastrModule } from "ng6-toastr-notifications";
 import { environment } from "src/environments/environment";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { CreateEmployeeComponent } from "./create-employee/create-employee.component";
-import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
+import { UpdateEmployeeComponent } from "./update-employee/update-employee.component";
 
 const appRoutes: Routes = [
   { path: "create", component: CreateEmployeeComponent },
@@ -39,7 +41,9 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     DataTableModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   declarations: [
     AppComponent,

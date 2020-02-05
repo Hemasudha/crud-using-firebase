@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Employee } from "../employees";
 import { EmployeesService } from "../employees.service";
-
+import { ToastrManager } from "ng6-toastr-notifications";
 @Component({
   selector: "app-update-employee",
   templateUrl: "./update-employee.component.html",
@@ -12,7 +12,10 @@ export class UpdateEmployeeComponent implements OnInit {
   editEmp: boolean = false;
   empEdit: Employee;
   showDiv: boolean = true;
-  constructor(private employeesService: EmployeesService) {}
+  constructor(
+    private employeesService: EmployeesService,
+    public toastr: ToastrManager
+  ) {}
   @Input() employee;
   @Output() closePane = new EventEmitter();
 
@@ -23,6 +26,7 @@ export class UpdateEmployeeComponent implements OnInit {
     this.editEmp = true;
     this.empEdit = employee;
     this.employeesService.updateEmployee(employee);
+    this.toastr.successToastr("Updated Successfully.", "Success!");
   }
   clear() {
     this.closePane.emit(this.employee);

@@ -18,7 +18,7 @@ export class EmployeeDetailsComponent implements OnInit {
   editEmp: boolean = false;
   empEdit: Employee;
   showDiv: boolean = false;
-  public details;
+  toast: boolean = false;
   constructor(private employeesService: EmployeesService) {}
 
   @Output() empDetails = new EventEmitter();
@@ -32,6 +32,7 @@ export class EmployeeDetailsComponent implements OnInit {
   changeCount(data) {
     console.log(data);
     this.showDiv = false;
+    this.toast = true;
   }
   edit(event) {
     this.showDiv = true;
