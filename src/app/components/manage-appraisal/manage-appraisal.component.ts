@@ -19,6 +19,7 @@ export class ManageAppraisalComponent implements OnInit {
   employee: any;
   editEmp: boolean;
   empEdit: any;
+  Csalary: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,8 +44,9 @@ export class ManageAppraisalComponent implements OnInit {
     this.salary = parseInt(this.employee.salary);
     this.appraisal = ((this.hike / this.salary) * 100).toFixed(2);
 
-    this.salary = this.hike + this.salary;
-    console.log(this.salary);
+    this.Csalary = this.hike + this.salary;
+    this.employee.salary = this.Csalary;
+    console.log(this.employee);
   }
   // save(event, empdata) {
   //   this.es.updateEmployee(empdata);
@@ -52,9 +54,10 @@ export class ManageAppraisalComponent implements OnInit {
   //   this.router.navigate(["/employees"]);
   // }
 
-  save(employee) {
+  save(e, employee) {
     this.editEmp = true;
     this.empEdit = employee;
-    this.es.updateEmployee(employee.salary);
+    this.es.updateEmployee(employee);
+    this.router.navigate(["/employees"]);
   }
 }
