@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { Employee } from "../employees";
-import { EmployeesService } from "../employees.service";
+import { Employee } from "../../shared/models/employees";
+import { EmployeesService } from "../../services/employees.service";
 import { ToastrManager } from "ng6-toastr-notifications";
 @Component({
   selector: "app-update-employee",

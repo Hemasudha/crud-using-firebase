@@ -1,6 +1,6 @@
-import { Employee } from "./../employees";
+import { Employee } from "../../shared/models/employees";
 import { Component, OnInit } from "@angular/core";
-import { EmployeesService } from "../employees.service";
+import { EmployeesService } from "../../services/employees.service";
 import {
   FormBuilder,
   FormGroup,

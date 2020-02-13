@@ -23,6 +23,7 @@
         class="form-control"
         [(ngModel)]="employee.salary"
         name="salary"
+        disabled
       />
     </div>
     <div class="form-group">
@@ -42,3 +43,7 @@
     />
   </form>
 </div>
+<app-manage-appraisal
+  *ngIf="showDiv"
+  [employees]="employee"
+></app-manage-appraisal>

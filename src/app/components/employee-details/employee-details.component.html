@@ -29,6 +29,14 @@
           <td>{{ employee.age }}</td>
           <td>{{ employee.salary }}</td>
           <td>{{ employee.city }}</td>
+          <td>
+            <button
+              class="btn btn-success"
+              (click)="appraisal($event, employee.id)"
+            >
+              Manage Appraisal
+            </button>
+          </td>
 
           <td>
             <button

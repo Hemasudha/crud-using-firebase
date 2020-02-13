@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { EmployeesService } from "../employees.service";
-import { Employee } from "../employees";
+import { EmployeesService } from "../../services/employees.service";
+import { Employee } from "../../shared/models/employees";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-employee-details",
@@ -13,7 +14,13 @@ export class EmployeeDetailsComponent implements OnInit {
   editEmp: boolean = false;
   empEdit: Employee;
   showDiv: boolean = false;
-  constructor(private employeesService: EmployeesService) {}
+  snapshotParam = "initial value";
+  subscribedParam = "initial value";
+  constructor(
+    private employeesService: EmployeesService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.employeesService.getUser().subscribe(res => {
@@ -33,5 +40,11 @@ export class EmployeeDetailsComponent implements OnInit {
   }
   deleteEmployee(event, employee) {
     this.employeesService.deleteEmployee(employee);
+  }
+  appraisal(event, id) {
+    this.employeesService.getId(id);
+    console.log(id);
+
+    this.router.navigate(["employees", id]);
   }
 }
